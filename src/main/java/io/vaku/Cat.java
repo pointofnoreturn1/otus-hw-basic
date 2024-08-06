@@ -3,21 +3,7 @@ package io.vaku;
 public class Cat extends Animal {
 
     public Cat(String name, double runSpeed, double stamina) {
-        super(name, runSpeed, -1, stamina);
-    }
-
-    @Override
-    public double run(int distance) {
-        double energyConsumption = runEnergyConsumption * distance;
-
-        if (checkStamina(energyConsumption)) {
-            System.out.println("Кошка пробежала " + distance + "м со скоростью " + runSpeed + "м/с");
-            stamina = stamina - energyConsumption;
-            return distance / runSpeed;
-        } else {
-            System.out.println("Животное устало");
-            return -1;
-        }
+        super(name, runSpeed, -1, stamina, -1);
     }
 
     @Override
