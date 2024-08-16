@@ -1,25 +1,23 @@
 package io.vaku;
 
-import java.util.zip.DataFormatException;
-
 public class Main {
     public static void main(String[] args) {
         String[][] array = new String[][] {{"1", "2", "3", "4"}, {"1", "2", "3", "4"}, {"1", "2", "3", "4"}, {"1", "2", "3", "4"}};
         try {
             System.out.println(sumStringArray(array));
-        } catch (AppArraySizeException | DataFormatException e) {
+        } catch (AppArraySizeException | AppArrayDataException e) {
             e.printStackTrace();
         }
     }
 
-    private static int sumStringArray(String[][] array) throws AppArraySizeException, DataFormatException {
+    private static int sumStringArray(String[][] array) throws AppArraySizeException, AppArrayDataException {
         if (array.length != 4) {
-            throw new AppArraySizeException("Array size is not equals [4][4]");
+            throw new AppArraySizeException("Array size is not equal [4][4]");
         }
 
         for (String[] arr : array) {
             if (arr.length != 4) {
-                throw new AppArraySizeException("Array size is not equals [4][4]");
+                throw new AppArraySizeException("Array size is not equal [4][4]");
             }
         }
 
@@ -29,7 +27,7 @@ public class Main {
                 try {
                     sum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new DataFormatException("Invalid value at index [" + i + "][" + j + "]");
+                    throw new AppArrayDataException("Invalid value at index [" + i + "][" + j + "]");
                 }
             }
         }
