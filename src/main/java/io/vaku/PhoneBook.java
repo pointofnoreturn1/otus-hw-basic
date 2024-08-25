@@ -3,20 +3,20 @@ package io.vaku;
 import java.util.*;
 
 public class PhoneBook {
-    private Map<String, List<Long>> dict = new HashMap<>();
+    private Map<String, Set<Long>> dict = new HashMap<>();
 
     public void add(String name, long number) {
-        List<Long> numbers = dict.containsKey(name) ? dict.get(name) : new ArrayList<>();
+        Set<Long> numbers = dict.containsKey(name) ? dict.get(name) : new HashSet<>();
         numbers.add(number);
         dict.put(name, numbers);
     }
 
-    public List<Long> find(String name) {
-        return dict.getOrDefault(name, Collections.emptyList());
+    public Set<Long> find(String name) {
+        return dict.getOrDefault(name, Collections.emptySet());
     }
 
     public boolean containsPhoneNumber(long number) {
-        for (Map.Entry<String, List<Long>> entry : dict.entrySet()) {
+        for (Map.Entry<String, Set<Long>> entry : dict.entrySet()) {
             if (entry.getValue().contains(number)) {
                 return true;
             }
