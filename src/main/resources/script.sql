@@ -10,13 +10,13 @@ CREATE TABLE test(
 CREATE TABLE question(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     test_id UUID NOT NULL,
-    question_name TEXT NOT NULL
+    question_text TEXT NOT NULL
 );
 
 CREATE TABLE answer(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     question_id UUID NOT NULL,
-    answer_name TEXT NOT NULL,
+    answer_text TEXT NOT NULL,
     is_correct BOOL NOT NULL
 );
 
