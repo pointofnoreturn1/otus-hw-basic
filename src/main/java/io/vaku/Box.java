@@ -21,7 +21,10 @@ public class Box <T extends Fruit> {
         return this.weight() == another.weight();
     }
 
-    public void addAll(Box<? extends T> another) {
-        list.addAll(another.list);
+    public void moveAllTo(Box<? super T> another) {
+        for (T fruit : list) {
+            another.addFruit(fruit);
+        }
+        list.clear();
     }
 }
